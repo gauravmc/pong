@@ -1,4 +1,6 @@
 #= require_tree ./pong
 
-game = new Pong.Game($('canvas')[0])
+canvas = $('canvas')[0]
+game = new Pong.Game(canvas)
 game.start()
+canvas.focus()

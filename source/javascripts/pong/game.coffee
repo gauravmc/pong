@@ -1,7 +1,11 @@
 class Pong.Game
-  constructor: (screen) ->
-    @screen = screen
-    @entities = []
+  constructor: (canvas) ->
+    @context = canvas.getContext '2d'
+    @height = canvas.height
+    @width = canvas.width
+    @entities = [
+      new Pong.Background
+    ]
 
   start: ->
     fps = 60
@@ -13,7 +17,7 @@ class Pong.Game
     , interval
 
   update: ->
-    entity.update() for entity in @entities when element.update
+    entity.update() for entity in @entities when entity.update
 
   draw: ->
-    entity.draw(@screen) for entity in @entities when element.draw
+    entity.draw(@) for entity in @entities when entity.draw
