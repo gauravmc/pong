@@ -1,9 +1,9 @@
 class Pong.Ball
-  constructor: (game) ->
+  constructor: (game_width, game_height) ->
     @width = 20
     @height = 20
-    @x = game.width/2 - @width
-    @y = game.height/2 - @height
+    @x = game_width/2 - @width
+    @y = game_height/2 - @height
     @xVelocity = 0
     @yVelocity = 0
 
@@ -11,6 +11,6 @@ class Pong.Ball
     @x += @xVelocity
     @y += @yVelocity
 
-  draw: (game) ->
-    game.context.fillStyle = '#fff'
-    game.context.fillRect @x, @y, @width, @height
+  draw: (context) ->
+    context.fillStyle = '#fff'
+    context.fillRect @x, @y, @width, @height
