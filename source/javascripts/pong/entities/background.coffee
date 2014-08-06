@@ -1,4 +1,6 @@
-class Pong.Background
-  draw: (context, width, height) ->
-    context.fillStyle = '#000'
-    context.fillRect 0, 0, width, height
+class Pong.Background extends Pong.Entity
+  constructor: (game_width, game_height) ->
+    super
+    @width = game_width
+    @height = game_height
+    @color = '#000'

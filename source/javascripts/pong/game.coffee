@@ -4,7 +4,7 @@ class Pong.Game
     @width = canvas.width
     @height = canvas.height
     @entities = [
-      new Pong.Background,
+      new Pong.Background(@width, @height),
       new Pong.Ball(@width, @height)
     ]
 

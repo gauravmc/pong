@@ -1,3 +1,4 @@
+#= require ./pong/entity
 #= require_tree ./pong
 
 canvas = $('canvas')[0]
