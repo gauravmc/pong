@@ -6,6 +6,7 @@ class Pong.Game
     @entities = [
       new Pong.Background(@width, @height),
       new Pong.Ball(@width, @height)
+      new Pong.Paddle(@width, @height)
     ]
 
   start: ->

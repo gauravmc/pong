@@ -1,5 +1,7 @@
 class Pong.Entity
-  constructor: ->
+  constructor: (game_width, game_height) ->
+    @game_width = game_width
+    @game_height = game_height
     @width = 0
     @height = 0
     @x = 0
