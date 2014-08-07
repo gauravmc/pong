@@ -11,3 +11,11 @@ class Pong.Entity
   draw: (context) ->
     context.fillStyle = @color
     context.fillRect @x, @y, @width, @height
+
+  has_collided_with: (entity) ->
+    return !(
+      ((@y + @height) < (entity.y)) ||
+      (@y > (entity.y + entity.height)) ||
+      ((@x + @width) < entity.x) ||
+      (@x > (entity.x + entity.width))
+    )

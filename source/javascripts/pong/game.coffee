@@ -5,8 +5,8 @@ class Pong.Game
     @height = canvas.height
     @entities = [
       new Pong.Background(@width, @height),
-      new Pong.Ball(@width, @height)
-      new Pong.Paddle(@width, @height)
+      paddle = new Pong.Paddle(@width, @height)
+      new Pong.Ball(@width, @height, paddle)
     ]
 
   start: ->
