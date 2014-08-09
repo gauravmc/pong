@@ -21,7 +21,7 @@ class Pong.Game
     , interval
 
   update: ->
-    entity.update() for entity in @entities when entity.update
+    entity.updateStatus() for entity in @entities when entity.updateStatus
 
   draw: ->
     entity.draw(@context, @width, @height) for entity in @entities when entity.draw

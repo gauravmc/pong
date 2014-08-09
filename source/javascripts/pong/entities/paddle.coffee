@@ -10,7 +10,7 @@ class Pong.Paddle extends Pong.Entity
     @userControlled = true
     $(window).on 'keyup keydown', @adjustPosition
 
-  update: ->
+  updateStatus: ->
     @y += @yVelocity
     @ensureNoTrespassing()
 
