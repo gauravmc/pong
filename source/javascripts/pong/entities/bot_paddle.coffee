@@ -10,4 +10,6 @@ class Pong.BotPaddle extends Pong.Paddle
     @y = @game_height()/2 - @height/2
 
   updateStatus: ->
-    @y = @ball.y - @height unless @ball.isOutOfBounds()
+    @y += @ball.yVelocity unless @ball.isOutOfBounds()
+    @ensureNoTrespassing()
+    @handleCollisionWithBall()

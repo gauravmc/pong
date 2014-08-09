@@ -1,5 +1,5 @@
 class Pong.Paddle extends Pong.Entity
-  constructor: ->
+  constructor: (@ball) ->
     super
     @width = 20
     @height = 120
@@ -16,7 +16,11 @@ class Pong.Paddle extends Pong.Entity
 
   updateStatus: ->
     @y += @yVelocity
+    @handleCollisionWithBall()
     @ensureNoTrespassing()
+
+  handleCollisionWithBall: ->
+    @ball.bounceOffPaddle(@) if @hasCollidedWith(@ball)
 
   adjustPosition: (event) =>
     if event.type == 'keydown'
