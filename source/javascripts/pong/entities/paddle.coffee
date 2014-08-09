@@ -16,9 +16,18 @@ class Pong.Paddle extends Pong.Entity
 
   adjustPosition: (event) =>
     if event.type == 'keydown'
-      if event.keyCode == 38
+      if event.keyCode == 38 # up arrow
         @yVelocity = -10
-      else if event.keyCode == 40
+      else if event.keyCode == 40 # down arrow
         @yVelocity = 10
     else if event.type == 'keyup'
       @yVelocity = 0
+
+  goingUp: ->
+    @yVelocity < 1
+
+  goingDown: ->
+    @yVelocity > 1
+
+  stationary: ->
+    @yVelocity == 0

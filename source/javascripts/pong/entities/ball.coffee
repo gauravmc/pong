@@ -13,4 +13,20 @@ class Pong.Ball extends Pong.Entity
     @yVelocity *= -1 if @y >= @game_height || @y <= 0
     @x += @xVelocity
     @y += @yVelocity
-    @xVelocity *= -1 if @has_collided_with(@paddle)
+    @handleCollision()
+
+  handleCollision: ->
+    if @has_collided_with(@paddle)
+      @xVelocity *= -1
+      if @paddle.goingUp()
+        @yVelocity += (@paddle.yVelocity / 1.7)
+        @yVelocity *= -1 if @goingDownwards()
+      else if @paddle.goingDown()
+        @yVelocity += -(@paddle.yVelocity / 1.7)
+        @yVelocity *= -1 if @goingUpwards()
+
+  goingUpwards: ->
+    @yVelocity < 0
+
+  goingDownwards: ->
+    @yVelocity > 0
