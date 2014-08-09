@@ -2,9 +2,17 @@ class Pong.Entity
   constructor: ->
     @width = 0
     @height = 0
+    @color = '#fff'
+    @setDefaultPosition()
+    @setDefaultVelocities()
+
+  setDefaultPosition: ->
     @x = 0
     @y = 0
-    @color = '#fff'
+
+  setDefaultVelocities: ->
+    @xVelocity = 0
+    @yVelocity = 0
 
   draw: (context) ->
     context.fillStyle = @color

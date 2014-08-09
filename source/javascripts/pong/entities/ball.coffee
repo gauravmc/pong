@@ -3,8 +3,6 @@ class Pong.Ball extends Pong.Entity
     super
     @width = 20
     @height = 20
-    @setDefaultPosition()
-    @setDefaultVelocities()
 
   setDefaultPosition: ->
     @x = @game_width()/2 - @width
@@ -37,10 +35,10 @@ class Pong.Ball extends Pong.Entity
     @yVelocity *= -1 if @collidedWithLowerEdge() || @collidedWithUpperEdge()
 
   collidedWithLowerEdge: ->
-    @y == @game_height() - @height
+    @y >= @game_height() - @height
 
   collidedWithUpperEdge: ->
-    @y == 0
+    @y <= 0
 
   goingUpwards: ->
     @yVelocity < 0

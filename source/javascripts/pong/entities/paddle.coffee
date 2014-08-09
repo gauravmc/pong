@@ -3,20 +3,22 @@ class Pong.Paddle extends Pong.Entity
     super
     @width = 20
     @height = 120
+    @userControlled = true
+    $(window).on 'keyup keydown', @adjustPosition if @userControlled
+
+  setDefaultPosition: ->
     @x = 20
     @y = @game_height()/2 - @height/2
+
+  setDefaultVelocities: ->
     @xVelocity = 0
     @yVelocity = 0
-    @userControlled = true
-    $(window).on 'keyup keydown', @adjustPosition
 
   updateStatus: ->
     @y += @yVelocity
     @ensureNoTrespassing()
 
   adjustPosition: (event) =>
-    return unless @userControlled
-
     if event.type == 'keydown'
       if event.keyCode == 38 # up arrow
         @yVelocity = -15
@@ -34,6 +36,3 @@ class Pong.Paddle extends Pong.Entity
 
   goingDown: ->
     @yVelocity > 1
-
-  stationary: ->
-    @yVelocity == 0

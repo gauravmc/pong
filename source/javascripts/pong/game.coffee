@@ -24,4 +24,4 @@ class Pong.Game
     entity.updateStatus() for entity in @entities when entity.updateStatus
 
   draw: ->
-    entity.draw(@context, @width, @height) for entity in @entities when entity.draw
+    entity.draw(@context) for entity in @entities when entity.draw
