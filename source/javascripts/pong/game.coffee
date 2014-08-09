@@ -1,12 +1,14 @@
 class Pong.Game
+  @WIDTH: 1280
+  @HEIGHT: 720
+
   constructor: (canvas) ->
     @context = canvas.getContext '2d'
-    @width = canvas.width
-    @height = canvas.height
+
     @entities = [
-      new Pong.Background(@width, @height),
-      paddle = new Pong.Paddle(@width, @height)
-      new Pong.Ball(@width, @height, paddle)
+      new Pong.Background,
+      paddle = new Pong.Paddle,
+      new Pong.Ball(paddle),
     ]
 
   start: ->
