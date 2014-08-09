@@ -8,7 +8,8 @@ class Pong.Game
     @entities = [
       new Pong.Background,
       paddle = new Pong.Paddle,
-      new Pong.Ball(paddle),
+      ball = new Pong.Ball(paddle),
+      new Pong.BotPaddle(ball)
     ]
 
   start: ->

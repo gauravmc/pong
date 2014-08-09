@@ -27,6 +27,9 @@ class Pong.Ball extends Pong.Entity
         @yVelocity += -(@paddle.yVelocity / 1.7)
         @yVelocity *= -1 if @goingUpwards()
 
+  isOutOfBounds: ->
+    (@x + @width > @game_width()) || (@x < 0)
+
   travel: ->
     @x += @xVelocity
     @y += @yVelocity
