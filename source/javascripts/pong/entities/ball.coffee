@@ -35,12 +35,6 @@ class Pong.Ball extends Pong.Entity
   bounceBackFromUpperAndLowerEdges: ->
     @yVelocity *= -1 if @collidedWithLowerEdge() || @collidedWithUpperEdge()
 
-  collidedWithLowerEdge: ->
-    @y >= @game_height() - @height
-
-  collidedWithUpperEdge: ->
-    @y <= 0
-
   goingUpwards: ->
     @yVelocity < 0
 

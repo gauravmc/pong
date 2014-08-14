@@ -31,3 +31,9 @@ class Pong.Entity
 
   game_height: ->
     Pong.Game.HEIGHT
+
+  collidedWithLowerEdge: ->
+    @y >= @game_height() - @height
+
+  collidedWithUpperEdge: ->
+    @y <= 0

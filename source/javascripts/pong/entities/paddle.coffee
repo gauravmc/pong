@@ -3,6 +3,7 @@ class Pong.Paddle extends Pong.Entity
     super
     @width = 20
     @height = 120
+    @speed = 10
     @userControlled = true
     $(window).on 'keyup keydown', @adjustPosition if @userControlled
 
@@ -25,9 +26,9 @@ class Pong.Paddle extends Pong.Entity
   adjustPosition: (event) =>
     if event.type == 'keydown'
       if event.keyCode == 38 # up arrow
-        @yVelocity = -15
+        @yVelocity = -@speed
       else if event.keyCode == 40 # down arrow
-        @yVelocity = 15
+        @yVelocity = @speed
     else if event.type == 'keyup'
       @yVelocity = 0
 
