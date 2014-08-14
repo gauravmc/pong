@@ -32,8 +32,7 @@ class Pong.Paddle extends Pong.Entity
       @yVelocity = 0
 
   ensureNoTrespassing: ->
-    @y = 0 if @y <= 0
-    @y = @game_height() - @height if @y >= @game_height() - @height
+    @y = Math.min(Math.max(@y, 0), @game_height() - @height)
 
   goingUp: ->
     @yVelocity < 1
