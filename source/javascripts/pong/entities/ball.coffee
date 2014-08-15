@@ -1,5 +1,5 @@
 class Pong.Ball extends Pong.Entity
-  constructor: ->
+  constructor: (@scoreboard) ->
     super
     @width = 20
     @height = 20
@@ -28,7 +28,7 @@ class Pong.Ball extends Pong.Entity
       @yVelocity *= -1 if @goingUpwards()
 
   isOutOfBounds: ->
-    (@x + @width > @game_width()) || (@x < 0)
+    @isGoneOutFromPlayerSide() || @isGoneOutFromBotSide()
 
   travel: ->
     @x += @xVelocity
@@ -40,6 +40,16 @@ class Pong.Ball extends Pong.Entity
 
   bounceBackFromUpperAndLowerEdges: ->
     @yVelocity *= -1 if @collidedWithLowerEdge() || @collidedWithUpperEdge()
+
+  isGoneOutFromPlayerSide: ->
+    goneOut = @x + @width > @game_width()
+    @scoreboard.playerScore += 1 if goneOut
+    goneOut
+
+  isGoneOutFromBotSide: ->
+    goneOut = @x < 0
+    @scoreboard.botScore += 1 if goneOut
+    goneOut
 
   goingUpwards: ->
     @yVelocity < 0

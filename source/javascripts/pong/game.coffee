@@ -7,9 +7,10 @@ class Pong.Game
 
     @entities = [
       new Pong.Background,
-      ball = new Pong.Ball,
+      scoreboard = new Pong.Scoreboard
+      ball = new Pong.Ball(scoreboard),
       new Pong.Paddle(ball),
-      new Pong.BotPaddle(ball)
+      new Pong.BotPaddle(ball),
     ]
 
   start: ->
