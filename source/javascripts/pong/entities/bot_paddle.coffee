@@ -1,6 +1,6 @@
-#= require ./paddle
+#= require ./player_paddle
 
-class Pong.BotPaddle extends Pong.Paddle
+class Pong.BotPaddle extends Pong.PlayerPaddle
   constructor: (@ball) ->
     super
     @userControlled = false

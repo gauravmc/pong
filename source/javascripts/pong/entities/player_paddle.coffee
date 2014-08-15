@@ -1,11 +1,11 @@
-class Pong.Paddle extends Pong.Entity
+class Pong.PlayerPaddle extends Pong.Entity
   constructor: (@ball) ->
     super
     @width = 20
     @height = 120
     @speed = 10
     @userControlled = true
-    $(window).on 'keyup keydown', @adjustPosition if @userControlled
+    $(window).on 'keyup keydown', @adjustPosition
 
   setDefaultPosition: ->
     @x = 20
@@ -24,6 +24,8 @@ class Pong.Paddle extends Pong.Entity
     @ball.bounceOffPaddle(@) if @hasCollidedWith(@ball)
 
   adjustPosition: (event) =>
+    return unless @userControlled
+
     if event.type == 'keydown'
       if event.keyCode == 38 # up arrow
         @yVelocity = -@speed

@@ -9,7 +9,7 @@ class Pong.Game
       new Pong.Background,
       scoreboard = new Pong.Scoreboard
       ball = new Pong.Ball(scoreboard),
-      new Pong.Paddle(ball),
+      new Pong.PlayerPaddle(ball),
       new Pong.BotPaddle(ball),
     ]
 
