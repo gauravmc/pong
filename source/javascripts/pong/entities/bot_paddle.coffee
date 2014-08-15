@@ -3,6 +3,7 @@
 class Pong.BotPaddle extends Pong.PlayerPaddle
   constructor: (@ball) ->
     super
+    @speed = 8
     @userControlled = false
 
   setDefaultPosition: ->
@@ -16,7 +17,7 @@ class Pong.BotPaddle extends Pong.PlayerPaddle
     @handleCollisionWithBall()
 
   trackBallPosition: ->
-    return if @ball.isOutOfBounds()
+    return if @ball.isOutOfBounds() || @ball.xVelocity <= 0
     if @y < @ball.y
       @yVelocity += @speed unless @collidedWithLowerEdge()
     else if @y > @ball.y
