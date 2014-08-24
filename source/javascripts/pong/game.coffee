@@ -24,10 +24,14 @@ class Pong.Game
     , @interval
 
   fixedTimeStep: ->
+    updated = false
+
     while @updateAt <= new Date().getTime()
       @update()
+      updated = true
       @updateAt += @interval
-    @draw()
+
+    @draw() if updated
 
   update: ->
     entity.updateStatus() for entity in @entities when entity.updateStatus
