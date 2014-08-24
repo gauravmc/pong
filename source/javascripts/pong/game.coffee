@@ -1,3 +1,5 @@
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.oRequestAnimationFrame
+
 class Pong.Game
   @WIDTH: 1280
   @HEIGHT: 720
