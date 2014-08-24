@@ -13,17 +13,30 @@ class Pong.Game
       new Pong.BotPaddle(ball),
     ]
 
+    @fps = 60
+    @interval = 1000/@fps
+
   start: ->
-    fps = 60
-    interval = 1000/fps
+    @updateAt = new Date().getTime()
 
     setInterval =>
+      @fixedTimeStep()
+    , @interval
+
+  fixedTimeStep: ->
+    currentTime = new Date().getTime()
+    if (@updateAt + @interval) >= currentTime
       @update()
       @draw()
-    , interval
+    else
+      while @updateAt < currentTime
+        @update()
+        @updateAt += @interval
+      @draw()
 
   update: ->
     entity.updateStatus() for entity in @entities when entity.updateStatus
+    @updateAt = new Date().getTime()
 
   draw: ->
     entity.draw(@context) for entity in @entities when entity.draw
