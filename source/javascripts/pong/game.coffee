@@ -24,19 +24,13 @@ class Pong.Game
     , @interval
 
   fixedTimeStep: ->
-    currentTime = new Date().getTime()
-    if (@updateAt + @interval) >= currentTime
+    while @updateAt <= new Date().getTime()
       @update()
-      @draw()
-    else
-      while @updateAt < currentTime
-        @update()
-        @updateAt += @interval
-      @draw()
+      @updateAt += @interval
+    @draw()
 
   update: ->
     entity.updateStatus() for entity in @entities when entity.updateStatus
-    @updateAt = new Date().getTime()
 
   draw: ->
     entity.draw(@context) for entity in @entities when entity.draw
