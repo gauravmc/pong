@@ -3,7 +3,7 @@
 class Pong.BotPaddle extends Pong.PlayerPaddle
   constructor: (@ball) ->
     super
-    @speed = 8
+    @speed = 5
     @userControlled = false
 
   setDefaultPosition: ->
