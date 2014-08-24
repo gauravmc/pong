@@ -18,12 +18,14 @@ class Pong.Game
 
   start: ->
     @updateAt = new Date().getTime()
+    @onNewFrame()
 
-    setInterval =>
-      @fixedTimeStep()
-    , @interval
+  onNewFrame: ->
+    window.requestAnimationFrame =>
+      @redrawWithfixedTimeStep()
+      @onNewFrame()
 
-  fixedTimeStep: ->
+  redrawWithfixedTimeStep: ->
     updated = false
 
     while @updateAt <= new Date().getTime()
